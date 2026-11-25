@@ -1,0 +1,12 @@
+# A one-pixel grayscale PNG. A rather unnecessary way to make one.
+# Chunk input: four-byte type followed by payload.
+"chunk" [
+  dup len 4 - u32be
+  swap dup crc32 u32be
+  cat cat
+] def
+
+"89504e470d0a1a0a" hex
+"IHDR" utf8 "00000001000000010800000000" hex cat chunk cat
+"IDAT" utf8 "789c6360000000020001" hex cat chunk cat
+"IEND" utf8 chunk cat

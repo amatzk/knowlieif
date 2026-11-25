@@ -1,0 +1,9 @@
+# Knowlieif: recursive factorial
+"fact" [
+  dup 1 <=
+  [ drop 1 ]
+  [ dup 1 - fact * ]
+  if
+] def
+
+6 fact .
